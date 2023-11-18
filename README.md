@@ -1,6 +1,6 @@
 # InterestingProject_STAT605
 
-### -- Animal Species Classification
+### -- Animal Species Classification --
 
 [Original Data](https://www.kaggle.com/datasets/utkarshsaxenadn/animal-image-classification-dataset/data)
 
