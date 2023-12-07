@@ -118,7 +118,7 @@ for epoch in range(epochs):
         
         for image,label in train_ds:      
             """
-            训练模型，简单理解train_on_batch就是：它是比model.fit()更高级的一个用法
+            train_on_batch is more advanced than model.fit()
             """
             history = model.train_on_batch(image,label)
             
@@ -171,17 +171,14 @@ plt.savefig('Accuracy_Loss_vg16.pdf')
 # ## save model
 history.save('model_vg16.h5')
 
-plt.figure(figsize=(18, 12))  # 图形的宽为18高为5
-#plt.suptitle("预测结果展示")
+plt.figure(figsize=(18, 12))  # width * height
 
 for images, labels in val_ds:
     for i in range(24):
         ax = plt.subplot(4,6, i + 1)  
         
-        # 显示图片
         plt.imshow(images[i].numpy())
         
-        # 需要给图片增加一个维度
         img_array = tf.expand_dims(images[i], 0) 
         
         predictions = model.predict(img_array)
