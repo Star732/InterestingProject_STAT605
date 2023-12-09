@@ -1,0 +1,42 @@
+# PyTorch test of convolutional neural network
+# Submit file
+
+# Must set the universe to Docker
+universe = docker
+# Use the PyTorch container from the NVIDIA GPU Cloud (NGC)
+docker_image = nvcr.io/nvidia/pytorch:19.10-py3
+
+# set the log, error and output files
+log = log/pytorch_$(Cluster).$(Process).log
+error = error/pytorch__$(Cluster).$(Process).err
+output = output/pytorch__$(Cluster).$(Process).out
+
+# set the executable to run
+executable = project.sh
+
+plusone = $(Process) + 1
+NewProcess = $INT(plusone,%d)
+arguments = $(NewProcess)
+
+# take our python script to the compute node
+# the script and data are shared by multiple examples and located in a
+# different directory
+transfer_input_files = main_$(NewProcess).py, data.zip, Train-1.zip
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+# We require a machine with a modern version of the CUDA driver
+Requirements = (Target.CUDADriverVersion >= 10.1)
+
+request_cpus = 1
+request_gpus = 1
+
++WantGPULab = true
++GPUJobLength = "medium"
+
+# select some memory and disk space
+request_memory = 17GB
+
+# Tell HTCondor to run 1 instances of our job:
+queue 2
