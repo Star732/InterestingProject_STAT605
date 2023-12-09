@@ -6,3 +6,4 @@
 
 Our **parallel jobs** includes two parts:
 
+![parallel-job](report-figures/parallel-jobs.png)
