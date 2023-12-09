@@ -37,6 +37,6 @@ request_gpus = 1
 
 # select some memory and disk space
 request_memory = 17GB
+request_disk = 17GB
 
-# Tell HTCondor to run 1 instances of our job:
 queue 2
