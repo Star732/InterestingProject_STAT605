@@ -12,7 +12,7 @@ error = error/pytorch__$(Cluster).$(Process).err
 output = output/pytorch__$(Cluster).$(Process).out
 
 # set the executable to run
-executable = project.sh
+executable = ./project.sh
 
 plusone = $(Process) + 1
 NewProcess = $INT(plusone,%d)
