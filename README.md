@@ -1,9 +1,25 @@
-# InterestingProject_STAT605
+### InterestingProject_STAT605
 
-### -- Animal Species Classification --
+##### -- Animal Species Classification --
 
-[Original Data](https://www.kaggle.com/datasets/utkarshsaxenadn/animal-image-classification-dataset/data)
+[Dataset](https://www.kaggle.com/datasets/utkarshsaxenadn/animal-image-classification-dataset/data): So as to satisfy the requirement that dataset size should be large enough to warrant the use of the compute clusters (either the Statistics HPC or the CHTC)–about 10 to 100 GB, our group used `Train Augmented` as traing set, `Validation Data` as validation set and `Testing Data` as test set. We also take `Interesting data` into our consideridation to test the robust of our model and make our project more interesting.
 
-[Download Location of Large Training Dataset](https://uwmadison.box.com/s/j1s26upb6wpwe3izstr55jrr7kjewzgw)
+Our **parallel jobs** includes two parts:
 
+           /                              \
+          
+         /                                  \  
+    
+   model-1: CNN                        model-2: VG-16
+    
+         | gpu                               | gpu
+ 
+      //...\\                             //...\\
 
+parallel jobs arranged             parallel jobs arranged
+  
+   by gpu itself                        by gpu itself
+     
+         |                                   |
+         
+performance of model 1             performance of model 2
